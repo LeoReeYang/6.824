@@ -9,21 +9,25 @@ package main
 // Please do not change this file.
 //
 
-import "6.824/mr"
-import "time"
-import "os"
-import "fmt"
+import (
+	"time"
+
+	"fmt"
+	"os"
+
+	"6.824/mr"
+)
 
 func main() {
+	fmt.Println(os.Args)
 	if len(os.Args) < 2 {
 		fmt.Fprintf(os.Stderr, "Usage: mrcoordinator inputfiles...\n")
 		os.Exit(1)
 	}
 
-	m := mr.MakeCoordinator(os.Args[1:], 10)
+	m := mr.MakeCoordinator(os.Args[1:], 2)
 	for m.Done() == false {
 		time.Sleep(time.Second)
 	}
-
 	time.Sleep(time.Second)
 }
